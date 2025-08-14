@@ -10,6 +10,8 @@ spec:
       storage: 1Gi
 
 ---
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -49,6 +51,7 @@ spec:
             claimName: mysql-pvc
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:

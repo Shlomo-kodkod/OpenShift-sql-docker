@@ -10,9 +10,9 @@ class DataLoader:
     def connect_to_db():
         return mysql.connector.connect(
             host="mysql",  
-            user="sqluser",
-            password="sqldbpass",
-            database="porjdb"
+            user="user",
+            password="pwd",
+            database="mydb"
         )
     
     @staticmethod
