@@ -9,7 +9,7 @@ class DataLoader:
     @staticmethod
     def connect_to_db():
         return mysql.connector.connect(
-               host="mysql",  
+            host="mysql",  
             user="sql-project",
             password="sqldbpass",
             database="porjdb"
