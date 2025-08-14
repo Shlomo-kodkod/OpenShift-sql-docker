@@ -15,7 +15,7 @@ class DataLoader:
             database="porjdb"
         )
     
-
+    @staticmethod
     def load_data():
         db = DataLoader.connect_to_db()
         try:
