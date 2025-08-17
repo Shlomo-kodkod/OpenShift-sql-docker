@@ -1,5 +1,5 @@
 
-oc new-app --name=mysql-db  -e MYSQL_USER=user -e MYSQL_PASSWORD=pwd -e MYSQL_DATABASE=mydb mysql:latest
+oc new-app --name=mysql-db  -e MYSQL_USER=user -e MYSQL_PASSWORD=pwd -e MYSQL_DATABASE=mydb mysql:8.0
 
 oc get pods 
 
