@@ -7,7 +7,11 @@ logger = logging.getLogger(__name__)
 
 class DataLoader:
     @staticmethod
-    def connect_to_db():
+    def connect_to_db() -> mysql.connector.MySQLConnection:
+        """
+        Establish a connection to the MySQL database.
+        Returns a MySQL connection object.
+        """
         return mysql.connector.connect(
             host="mysql",  
             user="user",
@@ -16,7 +20,12 @@ class DataLoader:
         )
     
     @staticmethod
-    def load_data():
+    def load_data() -> dict | None:
+        """
+        Load data from the 'Names' table in the MySQL database.
+        Returns a list containing the names and cities.
+        If the table is empty or an error occurs, returns None.
+        """
         db = DataLoader.connect_to_db()
         try:
             with db.cursor() as cursor:
