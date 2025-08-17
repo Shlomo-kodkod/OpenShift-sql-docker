@@ -1,9 +1,14 @@
 
 oc new-app --name=mysql-db  -e MYSQL_USER=user -e MYSQL_PASSWORD=pwd -e MYSQL_DATABASE=mydb mysql:8.0
 
+ 
+oc new-app mysql-persistent -e MYSQL_USER=user -e MYSQL_PASSWORD=pwd -e MYSQL_DATABASE=mydb 
+
+oc set volumes deployment mysql-db --add --mount-path=/mypvc --name=mypvc --claim-name=mypvc --read-only=false --type=persistentVolumeClaim --claim-size=1Gi
+
 oc get pods 
 
-oc rsh mysql-db-795bdbc9f-f4k68
+oc rsh mysql-db-79ccd69f57-ds7l4
 
 mysql -u user -p mydb
 
@@ -27,5 +32,4 @@ oc expose service fastapi
 
 oc get routes
 
-oc set volumes deployment/mysql-db --add --mount-path=/mypvc --name=mypvc --claim-name=mypvc --read-only=false --type=persistentVolumeClaim --claim-size=1Gi
 
