@@ -1,0 +1,42 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        deployment: mysql
+    spec:
+      containers:
+         - name: mysql
+           image: mysql:8.0
+           env:
+              - name: MYSQL_DATABASE
+                value: sqldb
+              - name: MYSQL_PASSWORD
+                value: pwd
+              - name: MYSQL_ROOT_PASSWORD
+                value: rootpwd
+              - name: MYSQL_USER
+                value: user
+           ports:
+             - containerPort: 3306
+               protocol: TCP
+           volumeMounts:
+             - name: mypvc
+               mountPath: /mypvc
+      volumes:
+        - name: mypvc
+          persistentVolumeClaim:
+            claimName: mypvc
+  
+  
