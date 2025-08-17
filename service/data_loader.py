@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 class DataLoader:
     @staticmethod
-    def connect_to_db() -> mysql.connector.MySQLConnection:
+    def connect_to_db():
         """
         Establish a connection to the MySQL database.
         Returns a MySQL connection object.
@@ -16,7 +16,7 @@ class DataLoader:
             host="mysql",  
             user="user",
             password="pwd",
-            database="mydb"
+            database="sqldb"
         )
     
     @staticmethod
