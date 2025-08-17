@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: openshift-sql-docker
+  labels:
+    app: openshift-sql-docker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: openshift-sql-docker
+  template:
+    metadata:
+      labels:
+        deployment: openshift-sql-docker
+    spec:
+      containers:
+        - name: openshift-sql-docker
+          image: 'image-registry.openshift-image-registry.svc:5000/shlomot575-dev/openshift-sql-docker@sha256:4d34b68a44a07e23eadddff8cf2186a258f714963088b13c4810e59b4fecd834'
+          ports:
+            - containerPort: 8080
