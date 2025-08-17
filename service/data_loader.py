@@ -20,7 +20,7 @@ class DataLoader:
         )
     
     @staticmethod
-    def load_data() -> dict | None:
+    def load_data():
         """
         Load data from the 'Names' table in the MySQL database.
         Returns a list containing the names and cities.
@@ -29,7 +29,7 @@ class DataLoader:
         db = DataLoader.connect_to_db()
         try:
             with db.cursor() as cursor:
-                cursor.execute("SELECT * FROM Names")
+                cursor.execute("SELECT * FROM Names;")
                 result = cursor.fetchall()
                 if not result:
                     return None
