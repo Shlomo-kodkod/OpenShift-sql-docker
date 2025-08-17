@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import logging
-from service.data_loader import DataLoader
+from data_loader import DataLoader
 
 
 app = FastAPI()
