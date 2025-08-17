@@ -2,7 +2,7 @@ oc new-app mysql-ephemeral --name=mysql-db -p MYSQL_USER=user -p MYSQL_PASSWORD=
 
 oc rsh mysql-1-hml6b
 
-mysql -u testuser -p testdb
+mysql -u user -p mydb
 
 
 CREATE TABLE Names (id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(50),city VARCHAR(50));
