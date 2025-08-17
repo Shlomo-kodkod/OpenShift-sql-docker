@@ -1,11 +1,11 @@
-# simple sql, fast api server
+# Simple fast api server 
 - A service that returns to GET request all the information that exists in the table.
 
 
 # Project Features
-- The MySQL database is run using OpenShift.
-- Access layer to data.
-- Server in FastAPI - Accesses MySQL and returns the table data to a dedicated endpoint.
+- MySQL database using OpenShift.
+- Access layer to DB.
+- FastAPI server - Accesses MySQL and returns the table data to a dedicated endpoint.
 
 # project structure
 
