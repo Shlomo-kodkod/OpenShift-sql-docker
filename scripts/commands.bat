@@ -1,14 +1,19 @@
-oc new-app mysql-ephemeral --name=mysql-db -p MYSQL_USER=user -p MYSQL_PASSWORD=pwd -p MYSQL_DATABASE=mydb
+
+oc new-app --name=mysql-db  -e MYSQL_USER=user -e MYSQL_PASSWORD=pwd -e MYSQL_DATABASE=mydb mysql:latest
 
 oc get pods 
 
-oc rsh mysql-1-hml6b
+oc rsh mysql-db-795bdbc9f-f4k68
 
 mysql -u user -p mydb
 
 CREATE TABLE Names (id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(50),city VARCHAR(50));
 
 INSERT INTO Names (name, city) VALUES ('Dan', 'Tel-aviv'),('Beni', 'Bni-brak'),('Or', 'Hifa');
+
+exit
+
+exit 
 
 oc new-app https://github.com/Shlomo-kodkod/OpenShift-sql-docker#main
 
@@ -22,4 +27,5 @@ oc expose service fastapi
 
 oc get routes
 
+oc set volumes deployment/mysql-db --add --mount-path=/mypvc --name=mypvc --claim-name=mypvc --read-only=false --type=persistentVolumeClaim --claim-size=1Gi
 
