@@ -1,5 +1,6 @@
 import mysql.connector
 import logging
+import os 
 
 
 logger = logging.getLogger(__name__)
@@ -13,11 +14,10 @@ class DataLoader:
         Returns a MySQL connection object.
         """
         return mysql.connector.connect(
-            host="mysql",  
-            user="user",
-            password="pwd",
-            database="sqldb"
-        )
+        host=os.environ.get("DB_HOST", "mysql"),
+        user=os.environ.get("DB_USER", "user"),
+        password=os.environ.get("DB_PASSWORD", "pwd"),
+        database=os.environ.get("DB_NAME", "sqldb"))
     
     @staticmethod
     def load_data():
@@ -27,16 +27,16 @@ class DataLoader:
         If the table is empty or an error occurs, returns None.
         """
         db = DataLoader.connect_to_db()
+        cursor = db.cursor() 
         try:
-            with db.cursor() as cursor:
-                cursor.execute("SELECT * FROM Names;")
-                result = cursor.fetchall()
-                if not result:
-                    return None
-                logger.info("Successfully execute query")
-                return result
+            cursor.execute("SELECT * FROM Names;")
+            result = cursor.fetchall()
+            if not result:
+                return None
+            logger.info("Successfully execute query")
+            return result
         except mysql.connector.Error as e:
-            logger.info(f"Error while retrieving query: {e}")
+            logger.error(f"Error while retrieving query: {e}")
             return None
         finally:
             db.close() if db else None

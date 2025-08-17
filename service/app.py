@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI 
+from fastapi.responses import JSONResponse
 import logging
 from service.data_loader import DataLoader
 
@@ -15,10 +16,10 @@ def get_names():
     try:
         names = DataLoader.load_data()
         logger.info("Data received successfully")
-        return names
+        return JSONResponse(content=names)
     except Exception as e:
         logger.error("Error while receiving data")
-        return {"Error": e}
+        return JSONResponse(content={"Error": e})
     
 
         
