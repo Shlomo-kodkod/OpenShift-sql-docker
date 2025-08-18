@@ -1,13 +1,13 @@
-# Simple fast api server 
+# Data server project 
 - A service that returns to GET request all the information that exists in the table.
 
 
-# Project Features
+## Project Features
 - MySQL database using OpenShift.
 - Access layer to DB.
-- FastAPI server - Accesses MySQL and returns the table data to a dedicated endpoint.
+- FastAPI server - Accesses MySQL and returns the sql data to a dedicated endpoint.
 
-# project structure
+## Project structure
 
 - data-loader/
 - ├── services/
