@@ -1,7 +1,7 @@
 
 oc new-app --name=mysql mysql:8.0 -e MYSQL_USER=user -e MYSQL_PASSWORD=pwd -e MYSQL_DATABASE=sqldb -e MYSQL_ROOT_PASSWORD=rootpwd
 
-oc set volumes deployment mysql --add --mount-path=/mypvc --name=mypvc --claim-name=mypvc --read-only=false --type=persistentVolumeClaim --claim-size=1Gi
+oc set volumes deployment mysql --add --mount-path=/var/lib/mysql --name=mypvc --claim-name=mypvc --read-only=false --type=persistentVolumeClaim --claim-size=1Gi
 
 oc get pods 
 

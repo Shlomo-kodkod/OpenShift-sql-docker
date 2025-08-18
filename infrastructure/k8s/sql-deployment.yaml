@@ -33,7 +33,7 @@ spec:
                protocol: TCP
            volumeMounts:
              - name: mypvc
-               mountPath: /mypvc
+               mountPath: /var/lib/mysql
       volumes:
         - name: mypvc
           persistentVolumeClaim:
